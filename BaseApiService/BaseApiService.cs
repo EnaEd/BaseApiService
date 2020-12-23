@@ -80,7 +80,7 @@ namespace BaseApiService
         /// <param name="pathToEndpoint">part different path to api endpint</param>
         /// <param name="data">request model</param>
         /// <returns>HttpResponseMessage</returns>
-        public async Task<HttpResponseMessage> ExecutePostAsync<T>(string pathToEndpoint, T data)
+        public async Task<HttpResponseMessage> ExecutePostAsync(string pathToEndpoint, object data)
         {
             var content = JsonConvert.SerializeObject(data);
             HttpResponseMessage responseMessage = await _httpClient.PostAsync(pathToEndpoint, new StringContent(content, Encoding.Unicode, "application/json"));
