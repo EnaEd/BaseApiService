@@ -1,13 +1,25 @@
 # BaseApiService
 simple service for call to api
 
-##Api Usage
+## Api Usage
 
-###create instance
+### Create instance
 ```c#
 var apiService = new BaseApiService.BaseApiService();
 ```
-###call api for get httpRespnseMesage
+### Create GET request to api for get HttpRespnseMesage
 ```c#
-var message = await apiService.ExecuteGetAsync("path to your endpoint");
+var response = await apiService.ExecuteGetAsync("path to your endpoint");
+```
+### Create GET request to api for get model by your type
+```c#
+TestClass response = await apiService.GetAsync<TestClass>("path to your endpoint");
+```
+### Create POST request to api for get HttpRespnseMesage
+```c#
+HttpResponseMessage response = await apiService.ExecutePostAsync("path to your endpoint");
+```
+### Create POST request to api for get model by your type
+```c#
+TestClass response = await apiService.PostAsync<TestClass>("path to your endpoint", requestModel);
 ```
