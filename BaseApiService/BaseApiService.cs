@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace BaseApiService
@@ -41,7 +41,7 @@ namespace BaseApiService
         {
             HttpResponseMessage responseMessage = await _httpClient.GetAsync(pathToEndpoint);
             string responseResult = await responseMessage.Content.ReadAsStringAsync();
-            var desirializedResult = JsonConvert.DeserializeObject<T>(responseResult);
+            var desirializedResult = JsonSerializer.Deserialize<T>(responseResult);
 
             return desirializedResult;
         }
@@ -66,10 +66,10 @@ namespace BaseApiService
         /// <returns>object by T type</returns>
         public async Task<T> PostAsync<T>(string pathToEndpoint, object data)
         {
-            var content = JsonConvert.SerializeObject(data);
+            var content = JsonSerializer.Serialize(data);
             HttpResponseMessage responseMessage = await _httpClient.PostAsync(pathToEndpoint, new StringContent(content, Encoding.Unicode, "application/json"));
             string responseResult = await responseMessage.Content.ReadAsStringAsync();
-            var desirializedResult = JsonConvert.DeserializeObject<T>(responseResult);
+            var desirializedResult = JsonSerializer.Deserialize<T>(responseResult);
 
             return desirializedResult;
         }
@@ -82,7 +82,7 @@ namespace BaseApiService
         /// <returns>HttpResponseMessage</returns>
         public async Task<HttpResponseMessage> ExecutePostAsync(string pathToEndpoint, object data)
         {
-            var content = JsonConvert.SerializeObject(data);
+            var content = JsonSerializer.Serialize(data);
             HttpResponseMessage responseMessage = await _httpClient.PostAsync(pathToEndpoint, new StringContent(content, Encoding.Unicode, "application/json"));
 
             return responseMessage;
