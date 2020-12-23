@@ -5,6 +5,7 @@
     <Authors>edena</Authors>
     <PackageTags>Api,webapi,baseapi</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
