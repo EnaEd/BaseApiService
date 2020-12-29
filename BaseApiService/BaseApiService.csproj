@@ -1,11 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <Authors>edena</Authors>
-    <PackageTags>Api,webapi,baseapi</PackageTags>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.2</Version>
-  </PropertyGroup>
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<RepositoryUrl>https://github.com/EnaEd/BaseApiService.git</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<TargetFramework>net5.0</TargetFramework>
+		<Authors>edena</Authors>
+		<PackageTags>Api,webapi,baseapi</PackageTags>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<Version>1.0.2</Version>
+	</PropertyGroup>
 
 </Project>
