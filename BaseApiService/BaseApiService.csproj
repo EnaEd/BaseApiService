@@ -2,12 +2,13 @@
 	<PropertyGroup>
 		<RepositoryUrl>https://github.com/EnaEd/BaseApiService.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-		<ProjectUrl>https://github.com/EnaEd/BaseApiService.git</ProjectUrl>
+		<PackageProjectUrl>https://github.com/EnaEd/BaseApiService</PackageProjectUrl>
 		<TargetFramework>net5.0</TargetFramework>
 		<Authors>edena</Authors>
 		<PackageTags>Api,webapi,baseapi</PackageTags>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<Version>1.0.3</Version>
+		<Version>1.0.4</Version>
+
 	</PropertyGroup>
 
 </Project>
