@@ -6,6 +6,24 @@ namespace SampleApp
 {
     class Program
     {
+        public class TestPostRequestModel
+        {
+            public int Id { get; set; }
+            public string Title { get; set; }
+            public int UserId { get; set; }
+            public string Body { get; set; }
+        }
+        public class TestPostResponseMdel
+        {
+            public int Id { get; set; }
+            public string Title { get; set; }
+            public int UserId { get; set; }
+            public string Body { get; set; }
+            public override string ToString()
+            {
+                return $"{Id}\n{Title}\n{Body}\n";
+            }
+        }
         public class DateTimeRespooseModel
         {
             //[JsonProperty("$id")]
@@ -26,6 +44,8 @@ namespace SampleApp
         static void Main(string[] args)
         {
             DateTimeRespooseModel model = new();
+            TestPostResponseMdel responseModel = new();
+            TestPostRequestModel postModel = new();
             var apiService = new BaseApiService.BaseApiService();
             string response = null;
             Task.Run(async () =>
@@ -45,8 +65,29 @@ namespace SampleApp
             Console.WriteLine("\n---------------------------\nGET:\nreturn: Desirialize model\n-------------------------- ");
             Console.WriteLine(model);
 
+            Console.WriteLine("\n***************\ntest post reuest\n*******************\n");
+
+            Task.Run(async () =>
+            {
+                responseModel =
+                await apiService.PostAsync<TestPostResponseMdel>("http://jsonplaceholder.typicode.com/users", new TestPostRequestModel { Id = 1 });
+
+            }).Wait();
+            Console.WriteLine("\n---------------------------\nPOST:\nreturn: Desirialize model\n-------------------------- ");
+            Console.WriteLine(responseModel);
+
+            Task.Run(async () =>
+            {
+                HttpResponseMessage responseMessage = await apiService.ExecutePostAsync("http://jsonplaceholder.typicode.com/posts", new TestPostRequestModel { Id = 1, Body = "Lorem....." });
+                response = await responseMessage.Content.ReadAsStringAsync();
+            }).Wait();
+            Console.WriteLine("\n---------------------------\nPOST:\nreturn: HttpResponseMessage\n-------------------------- ");
+            Console.WriteLine(response);
+
+
 
             Console.Read();
+
         }
     }
 }
