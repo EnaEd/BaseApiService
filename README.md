@@ -23,3 +23,14 @@ HttpResponseMessage response = await apiService.ExecutePostAsync("path to your e
 ```c#
 TestClass response = await apiService.PostAsync<TestClass>("path to your endpoint", requestModel);
 ```
+
+
+
+### Additional abilities
+```c#
+//create instance by custom httpClient
+var apiService = new BaseApiService.BaseApiService(HttpClient client);
+
+//set baseUrl 
+var apiService = new BaseApiService.BaseApiService(string basePartOfPath);
+```
